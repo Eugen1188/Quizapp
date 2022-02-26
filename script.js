@@ -56,8 +56,8 @@ let questions = [
         "right_answer": 4
     }
 ];
-
-let = currentQuestion = 0;
+let righQuestions = 0;
+let currentQuestion = 0;
 
 function init() {
 
@@ -68,7 +68,10 @@ function init() {
 
 function showQuestion() {
     if (currentQuestion >= questions.length) {
-
+        document.getElementById('endScreen').style = '';
+        document.getElementById('questionBody').style = 'display: none';
+        document.getElementById('amount-of-questions').innerHTML = questions.length;
+        document.getElementById('amount-of-right-questions').innerHTML = righQuestions;
     } else {
         let question = questions[currentQuestion];
 
@@ -89,6 +92,7 @@ function answer(selection) {
     if (selectedQuestionNumber == question['right_answer']) {
         console.log('Richtige Antwort!!');
         document.getElementById(selection).parentNode.classList.add('bg-success');
+        righQuestions++;
     } else {
         console.log('Falsche Antwort!!!');
         document.getElementById(selection).parentNode.classList.add('bg-danger');

@@ -78,7 +78,7 @@ function showQuestion() {
     }
 }
 
-function gameIsOver(){
+function gameIsOver() {
     return currentQuestion >= questions.length;
 }
 
@@ -107,10 +107,14 @@ function answer(selection) {
         AUDIO_FAIL.play();
     }
     document.getElementById('next-button').disabled = false;
+    document.getElementById('answer_2').removeAttribute("onclick");
+    document.getElementById('answer_1').removeAttribute("onclick");
+    document.getElementById('answer_3').removeAttribute("onclick");
+    document.getElementById('answer_4').removeAttribute("onclick");
 }
 
 
-function rightAnswerSelected(selectedQuestionNumber, question){
+function rightAnswerSelected(selectedQuestionNumber, question) {
     return selectedQuestionNumber == question['right_answer'];
 }
 
@@ -162,5 +166,4 @@ function restartGame() {
     init();
     document.getElementById('questionBody').style = ''; //questionBody wieder anzeigen
     document.getElementById('endScreen').style = 'display: none'; // Endscreen ausblenden
-
 }

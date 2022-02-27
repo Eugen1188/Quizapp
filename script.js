@@ -106,13 +106,24 @@ function answer(selection) {
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
         AUDIO_FAIL.play();
     }
-    document.getElementById('next-button').disabled = false;
-    document.getElementById('answer_2').removeAttribute("onclick");
-    document.getElementById('answer_1').removeAttribute("onclick");
-    document.getElementById('answer_3').removeAttribute("onclick");
-    document.getElementById('answer_4').removeAttribute("onclick");
+disableButtons();
 }
 
+
+function disableButtons(){
+    document.getElementById('next-button').disabled = false;
+    document.getElementById('answer_1').parentNode.removeAttribute("onclick");
+    document.getElementById('answer_2').parentNode.removeAttribute("onclick");
+    document.getElementById('answer_3').parentNode.removeAttribute("onclick");
+    document.getElementById('answer_4').parentNode.removeAttribute("onclick");
+}
+
+function enableButtons(){
+    document.getElementById('answer_1').parentNode.setAttribute("onclick","answer('answer_1');");
+    document.getElementById('answer_2').parentNode.setAttribute("onclick","answer('answer_2');");
+    document.getElementById('answer_3').parentNode.setAttribute("onclick","answer('answer_3');");
+    document.getElementById('answer_4').parentNode.setAttribute("onclick","answer('answer_4');");
+}
 
 function rightAnswerSelected(selectedQuestionNumber, question) {
     return selectedQuestionNumber == question['right_answer'];
@@ -123,8 +134,8 @@ function nextQuestion() {
     document.getElementById('next-button').disabled = true;
     resetAnswerButtons();
     showQuestion();
+    enableButtons();
     updateProgressBar();
-
 }
 
 function updateProgressBar() {

@@ -156,7 +156,7 @@ function restartGame() {
     righQuestions = 0;
     currentQuestion = 0;
     init();
-    document.getElementById('questionBody').style = ''; //questionBody wider anzeigen
+    document.getElementById('questionBody').style = ''; //questionBody wieder anzeigen
     document.getElementById('endScreen').style = 'display: none'; // Endscreen ausblenden
 
 }

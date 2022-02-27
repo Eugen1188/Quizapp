@@ -73,7 +73,6 @@ function showQuestion() {
     if (gameIsOver()) {
         showEndScreen();
     } else {
-        updateProgressBar();
         updateToNextQuestion();
     }
 }
@@ -119,10 +118,12 @@ function nextQuestion() {
     document.getElementById('next-button').disabled = true;
     resetAnswerButtons();
     showQuestion();
+    updateProgressBar();
+
 }
 
 function updateProgressBar() {
-    let percent = (currentQuestion + 1) / questions.length;
+    let percent = (currentQuestion) / questions.length;
     percent = Math.round(percent * 100);
     document.getElementById('progress-bar').innerHTML = `${percent}%`
     document.getElementById('progress-bar').style = `width: ${percent}%`
@@ -156,6 +157,7 @@ function restartGame() {
     document.getElementById('header-image').src = 'img/pencil.jpg';
     righQuestions = 0;
     currentQuestion = 0;
+    updateProgressBar();
     init();
     document.getElementById('questionBody').style = ''; //questionBody wieder anzeigen
     document.getElementById('endScreen').style = 'display: none'; // Endscreen ausblenden

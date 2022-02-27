@@ -65,8 +65,9 @@ let AUDIO_FAIL = new Audio('audio/fail.mp3');
 function init() {
 
     document.getElementById('all-questions').innerHTML = questions.length;
-
     showQuestion();
+    document.getElementById('progress-bar').innerHTML = `0`
+    document.getElementById('progress-bar').style = `width: ${2}%`
 }
 
 function showQuestion() {

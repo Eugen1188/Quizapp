@@ -93,9 +93,9 @@ function showEndScreen() {
 function answer(selection) {
     let question = questions[currentQuestion];
     let selectedQuestionNumber = selection.slice(-1);
-    let idOFRightAnswer = `answer_${question['right_answer']}`;
+    let idOfRightAnswer = `answer_${question['right_answer']}`;
 
-    if (rightAnswerSelected(selectedQuestionNumber)) {
+    if (rightAnswerSelected(selectedQuestionNumber, question)) {
         console.log('Richtige Antwort!!');
         document.getElementById(selection).parentNode.classList.add('bg-success');
         AUDIO_SUCCESS.play();
@@ -103,14 +103,15 @@ function answer(selection) {
     } else { // show question
         console.log('Falsche Antwort!!!');
         document.getElementById(selection).parentNode.classList.add('bg-danger');
-        document.getElementById(idOFRightAnswer).parentNode.classList.add('bg-success');
+        document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
         AUDIO_FAIL.play();
     }
     document.getElementById('next-button').disabled = false;
 }
 
-function rightAnswerSelected(selectedQuestionNumber){
-  return selectedQuestionNumber == question['right_answer'];
+
+function rightAnswerSelected(selectedQuestionNumber, question){
+    return selectedQuestionNumber == question['right_answer'];
 }
 
 function nextQuestion() {
